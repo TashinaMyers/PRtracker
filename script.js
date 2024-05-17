@@ -3,18 +3,78 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
-  // TODO: Get user input to create and return an array of employee objects
+const options = ["collectEmployees"];
+  const employees = [];
+  let continueAdding = true;
+  while (continueAdding) {
+      const employee = {}; 
+      employee.firstName = prompt("Enter the employee's first name:");
+      employee.lastName = prompt("Enter the employee's last name:");
+      employee.salary = parseFloat(prompt("Enter the employee's salary:"));
+      employees.push(employee);
+
+      const userInput = prompt("Do you want to continue?").toLowerCase();
+      continueAdding = userInput === "yes";
+      
+  }
+
+  return employees;
 }
 
-// Display the average salary
+let employeesArray = [];
+let employee1 = {
+  firstName: "firstNamw",
+  lastName: "lastName",
+  salary: 0
+};
+
+let employee2 = {
+  firstName: "firstName",
+  lastName: "lastName",
+  age: 0
+};
+
+employeesArray.push(employee1);
+employeesArray.push(employee2)
+const employeeData = collectEmployees();
+console.log(employeeData);
+
+console.log("Collected Employee Data:");
+employeeData.forEach((employee, i) => {
+    console.log(`Employee ${i + 1}:
+    First Name: ${employee.firstName}
+    Last Name: ${employee.lastName}
+    Salary: $${employee.salary}`);
+}); 
+
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
+    let totalSalary = 0
+       employeesArray.forEach(employee => {
+        totalSalary += employee.salary;
+    });
 }
+    const averageSalary = 'totalSalary / employeesArray.length';
+    console.log(`Average Salary: ${averageSalary}`);
+    console.log(`Number of Employees: ${employeesArray.length}`);
+    console.log('The average salary between all our employees is: ${average.Salary}');
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
+  if (employeesArray.length === 0) {
+    console.log("No employees found.");
+    return;
 }
+
+const Index = Math.floor(Math.random() * employeesArray.length);
+const randomEmployee = employeesArray[Index];
+console.log(`Random Employee: ${randomEmployee.firstName} ${randomEmployee.lastName}`);
+};
+
+getRandomEmployee(collectEmployees);
+  console.log('Congratulations! ${random.Employee}, you have been chosen for a $1000 raise');
+
 
 /*
   ====================
